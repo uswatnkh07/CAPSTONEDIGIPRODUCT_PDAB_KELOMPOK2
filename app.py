@@ -298,7 +298,7 @@ if selected == 'Home':
                     with col1.expander("Informasi Selengkapnya ⓘ"):
                         st.subheader("Keterangan")
                         st.write("""
-                            Ini adalah perbandingan akurasi K-Nearest Neighbor sebelum dan sesudah tuning. Terlihat bahwa nilai yang dihasilkan lebih kurang baik.
+                            Ini adalah perbandingan akurasi K-Nearest Neighbor sebelum dan sesudah tuning. Terlihat bahwa nilai yang dihasilkan kurang baik.
                         """)
                 composition_plot1()
 
