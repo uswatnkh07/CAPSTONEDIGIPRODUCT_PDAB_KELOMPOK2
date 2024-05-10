@@ -5,16 +5,8 @@ from streamlit_option_menu import option_menu
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-from sklearn.preprocessing import MinMaxScaler, LabelEncoder
-from sklearn.cluster import KMeans, AgglomerativeClustering
 import plotly.express as px
 import altair as alt
-import pickle
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.naive_bayes import GaussianNB
 
 st.set_page_config(
     page_title="Prediksi Kategori Rumah",
