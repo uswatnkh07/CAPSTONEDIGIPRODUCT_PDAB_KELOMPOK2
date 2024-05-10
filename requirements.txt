@@ -8,4 +8,3 @@ matplotlib
 scikit-learn
 plotly-express
 altair
-pickle
