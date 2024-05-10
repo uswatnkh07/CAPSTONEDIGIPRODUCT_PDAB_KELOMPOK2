@@ -16,6 +16,10 @@ from sklearn.metrics import accuracy_score
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB
 
+st.set_page_config(
+    page_title="Predksi Dan Klasterisasi Kategori Rumah",
+    page_icon="🏠",
+)
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
