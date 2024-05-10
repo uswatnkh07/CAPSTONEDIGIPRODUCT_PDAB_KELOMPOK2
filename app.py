@@ -64,7 +64,7 @@ if selected == 'Home':
              Namun sebelum itu, perlu untuk memahami, mengevaluasi, dan meningkatkan kinerja model dan analisis data.
              Oleh karena itu, perlu untuk memahami model analisis agar mencapai akhir analisis yang baik dan akurat.
               """)
-    tab0, tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["Home", "Dataset", "Confusion Metrics", "Performance Metrics", "ROC Curve", "Cross-Validation Scores", "Cluster Category"])
+    tab0, tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(["Home", "Dataset", "Confusion Metrics", "Performance Metrics", "ROC Curve", "Cross-Validation Scores", "Final Model", "Cluster Category"])
     with tab0:
         def daftar_evaluasi():
             st.markdown("<h5>Daftar Evaluasi 📈</h5>", unsafe_allow_html=True)
@@ -251,9 +251,59 @@ if selected == 'Home':
                             Meskipun skor Gaussian Naive Bayes lebih tinggi daripada K-Nearest Neighbors, hasil analisis yang lebih mendalam menunjukkan bahwa Gaussian Naive Bayes adalah pilihan yang lebih baik untuk tugas klasifikasi yang diwakili dalam grafik. Ini karena model tersebut menunjukkan kinerja yang lebih baik secara keseluruhan dan lebih konsisten dalam semua lipatan data. Oleh karena itu, langkah yang dapat diambil adalah mengadopsi model Gaussian Naive Bayes untuk aplikasi klasifikasi ini. Selanjutnya, penting untuk melakukan pemantauan terus-menerus terhadap kinerja model ini dan memperbarui model sesuai dengan perkembangan data dan kebutuhan bisnis yang berkelanjutan.
                         """)
         relationship_plot()
-
+        
     ###################################### TAB6
     with tab6:
+            # Load data
+            df = pd.read_csv('Housing.csv')
+            df1 = pd.read_csv('Cleaned_Housing.csv')
+            option = st.selectbox(
+                "Pilih informasi apa yang ingin di dapatkan.",
+                ["Keputusan Final Model", "Perbandingan Akurasi Gaussian Naive Bayes Sebelum dan Sesudah Tuning", "Perbandingan Akurasi K-Nearest Neighbor Sebelum dan Sesudah Tuning"]
+            )
+            # composition 1
+            if option == "Keputusan Final Model":
+                def composition_plot1():
+                    st.markdown("<h6 style='text-align: center;'>Gaussian Naive Bayes Sebagai Model</h6>", unsafe_allow_html=True)
+                    st.write("""
+                            Menjadi keputusan besar memang dalam hal menentukan model apa yang akan digunakan. Namun dari hasil evaluasi yang telah dilakukan, langkah selanjutnya adalah melakukan pemilihan model yang optimal untuk klasifikasi kategori rumah berdasarkan fitur-fitur properti. Berdasarkan analisis, model Gaussian Naive Bayes menunjukkan akurasi yang cukup baik dengan performa yang stabil dalam cross-validation. Selain itu, dilakukan tuning hyperparameter untuk memperbaiki performa model, dimana akurasi setelah tuning mengalami peningkatan yang signifikan. Langkah berikutnya adalah menerapkan model Gaussian Naive Bayes yang telah dioptimalkan untuk memprediksi kategori furnishing berdasarkan fitur-fitur yang telah dikelompokkan sebelumnya menggunakan algoritma K-Means clustering.
+                        """)
+                composition_plot1()
+
+            # composition 2
+            elif option == "Perbandingan Akurasi Gaussian Naive Bayes Sebelum dan Sesudah Tuning":
+                def composition_plot1():
+                    st.markdown("<h6 style='text-align: center;'>Akurasi Gaussian Naive Bayes Sebelum dan Sesudah Tuning</h6>", unsafe_allow_html=True)
+                    # Menampilkan gambar dari file lokal
+                    from PIL import Image
+                    image = Image.open('tuningGNB.png')
+                    st.image(image, caption='')
+                    col1, col2 = st.columns(2)
+                    with col1.expander("Informasi Selengkapnya ⓘ"):
+                        st.subheader("Keterangan")
+                        st.write("""
+                            Ini adalah perbandingan akurasi gaussian naive bayes sebelum dan sesudah tuning. Terlihat bahwa nilai yang dihasilkan lebih baik.
+                        """)
+                composition_plot1()
+
+            # composition 3
+            elif option == "Perbandingan Akurasi K-Nearest Neighbor Sebelum dan Sesudah Tuning":
+                def composition_plot1():
+                    st.markdown("<h6 style='text-align: center;'>Akurasi K-Nearest Neighbor Sebelum dan Sesudah Tuning</h6>", unsafe_allow_html=True)
+                    # Menampilkan gambar dari file lokal
+                    from PIL import Image
+                    image = Image.open('tuningKNN.png')
+                    st.image(image, caption='')
+                    col1, col2 = st.columns(2)
+                    with col1.expander("Informasi Selengkapnya ⓘ"):
+                        st.subheader("Keterangan")
+                        st.write("""
+                            Ini adalah perbandingan akurasi K-Nearest Neighbor sebelum dan sesudah tuning. Terlihat bahwa nilai yang dihasilkan lebih kurang baik.
+                        """)
+                composition_plot1()
+
+    ###################################### TAB7
+    with tab7:
             def relationship_plot():
                 st.markdown("<h6 style='text-align: center;'><b>Cluster Categories</b></h6>", unsafe_allow_html=True)
 
