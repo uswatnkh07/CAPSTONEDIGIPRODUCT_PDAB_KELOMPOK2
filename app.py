@@ -112,7 +112,7 @@ if selected == 'Home':
             elif option == "Lihat Informasi Dataset Akhir":
                 def composition_plot1():
                     st.markdown("<h6 style='text-align: center;'>Dataset Akhir</h6>", unsafe_allow_html=True)
-                    st.write(df)
+                    st.write(df1)
                     col1, col2 = st.columns(2)
                     with col1.expander("Informasi Selengkapnya ⓘ"):
                         st.subheader("Keterangan")
