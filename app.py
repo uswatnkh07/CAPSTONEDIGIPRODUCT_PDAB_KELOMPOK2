@@ -634,12 +634,6 @@ if selected == 'Predict':
     # Validasi input
     if input_data is None:
         st.error("Silakan isi nilai input terlebih dahulu!")
-    else:
-        price = input_data['price'].iloc[0]
-
-        # Check if price falls within the custom range
-        if 600000.00 <= price <= 700000.00:
-            st.info("Hasil Prediksi Masuk Ke Dalam Kategori Rumah: Medium")
         else:
             prediction = model.predict(input_data)
             
