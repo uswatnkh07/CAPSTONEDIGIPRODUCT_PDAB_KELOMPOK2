@@ -630,7 +630,7 @@ if selected == 'Predict':
         inputs['area'] = st.number_input('Area (m²)', min_value=1650.0, max_value=15600.0, step=0.01, format="%.2f", help="Luas Area Atau Luas Tanah?")
 
     input_data = pd.DataFrame(inputs, index=[0], columns=model.feature_names_in_)
-     if st.button('Predict'):
+    if st.button('Predict'):
         # Validasi input
         if input_data is None:
             st.error("Silakan isi nilai input terlebih dahulu!")
