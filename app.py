@@ -631,23 +631,23 @@ if selected == 'Predict':
 
     input_data = pd.DataFrame(inputs, index=[0], columns=model.feature_names_in_)
     if st.button('Predict'):
-        # Validasi input
-        if input_data is None:
-            st.error("Silakan isi nilai input terlebih dahulu!")
-        else:
+    # Validasi input
+    if input_data is None:
+        st.error("Silakan isi nilai input terlebih dahulu!")
+    else:
         price = input_data['price'].iloc[0]
 
         # Check if price falls within the custom range
         if 600000.00 <= price <= 700000.00:
             st.info("Hasil Prediksi Masuk Ke Dalam Kategori Rumah: Medium")
+        else:
+            prediction = model.predict(input_data)
+            
+            if prediction == 0:
+                st.success("Hasil Prediksi Masuk Ke Dalam Kategori Rumah: Cheap")
+            elif prediction == 1:
+                st.info("Hasil Prediksi Masuk Ke Dalam Kategori Rumah: Medium")
+            elif prediction == 2:
+                st.warning("Hasil Prediksi Masuk Ke Dalam Kategori Rumah: Expensive")
             else:
-                prediction = model.predict(input_data)
-                
-                if prediction == 0:
-                    st.success("Hasil Prediksi Masuk Ke Dalam Kategori Rumah: Cheap")
-                elif prediction == 1:
-                    st.info("Hasil Prediksi Masuk Ke Dalam Kategori Rumah: Medium")
-                elif prediction == 2:
-                    st.warning("Hasil Prediksi Masuk Ke Dalam Kategori Rumah: Expensive")
-                else:
-                    raise ValueError(f"Unexpected prediction result: {prediction}")
+                raise ValueError(f"Unexpected prediction result: {prediction}")
